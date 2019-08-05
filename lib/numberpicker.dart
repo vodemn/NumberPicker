@@ -24,6 +24,7 @@ class NumberPicker extends StatelessWidget {
     @required this.minValue,
     @required this.maxValue,
     @required this.onChanged,
+    this.list,
     this.itemExtent = kDefaultItemExtent,
     this.listViewHeight = kDefaultListViewCrossAxisSize,
     this.step = 1,
@@ -129,7 +130,10 @@ class NumberPicker extends StatelessWidget {
 
   ///called when selected value changes
   final ValueChanged<num> onChanged;
-
+  
+  ///
+  final List<String> list,
+  
   ///min value user can pick
   final int minValue;
 
@@ -269,7 +273,7 @@ class NumberPicker extends StatelessWidget {
                     ? new Container() //empty first and last element
                     : new Center(
                         child: new Text(
-                          getDisplayedValue(value),
+                          list[getDisplayedValue(value)],
                           style: itemStyle,
                         ),
                       );
